@@ -26,8 +26,8 @@ class LoginUser{
 					session_start();
 					$_SESSION['user'] = $this->username;
 					$person = $_SESSION['user'];
-				setcookie("user", $person, time() + (86400 * 30), "paragram.repl.co");
-
+					setcookie("user", $person, time() + (86400 * 30), "paragram.repl.co");
+					
 					header("location: /"); exit();
 				}
 			}

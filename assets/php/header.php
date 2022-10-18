@@ -1,7 +1,5 @@
 <?php session_start();
 $config = json_decode(file_get_contents(__DIR__ . '/../../config.json'));
-//$admin = json_decode(file_get_contents('./config.json'));
-	//echo htmlspecialchars($e->sitetitle);
 if (!file_exists(__DIR__ . '/../../config.json')){
 	echo "<script>window.location.replace('/site/install')</script>";
 }

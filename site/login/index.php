@@ -2,8 +2,15 @@
 <?php
 session_start();
 
+    if(isset($_COOKIE['user'])){
+        session_start();
+        setcookie("user", $user, time() - 3600, "paragram.repl.co");
+		$_SESSION['user'] = $_COOKIE['user'];
+        header("Location: account");
+        exit();
+    };
 	if(isset($_SESSION['user'])){
-		header("Location: account.php"); exit();
+		header("Location: account"); exit();
 	}
 	if(isset($_POST['submit'])){
 		$user = new LoginUser($_POST['username'], /* $_POST['email'],*/$_POST['password']);

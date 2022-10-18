@@ -1,16 +1,18 @@
 <?php 
 	session_start();
 	if(!isset($_SESSION['user'])){
-		header("location: login.php");	exit();
+		header("location: login");	exit();
 	}
 
 	if(isset($_GET['logout'])){
 		unset($_SESSION['user']);
 		setcookie("user", $user, time() - 3600, "paragram.repl.co");
-		header("location: login.php");	exit();
+		header("location: login");	exit();
 	}
 	
-//	if($_SESSION['user'] = )
+	if($_SESSION['user'] = ($config->admins)){
+		echo "<script>alert('ADMIN')</script>";
+	} else {echo "<script>alert('NOT ADMIN')</script>";};
  ?>
 
 <?php include(__DIR__ . "/../../assets/php/header.php"); ?>
@@ -21,7 +23,7 @@
           <div class="row">
                             <div class="col-md-3 col-sm-12"></div>
                             <div class="col-md-6 col-sm-12 border mt-4 mx-2 p-4 rounded shadow">
-															<h4>User: <?php echo $_SESSION["user"] ?>
+															<h4>Current User: <?php echo $_SESSION["user"] ?>
 																<br>
 																<?php ?>
 															</h4>

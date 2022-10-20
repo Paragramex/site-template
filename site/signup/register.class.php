@@ -23,6 +23,7 @@ class RegisterUser{
 		
 
 		$this->raw_password = filter_var(trim($password), FILTER_SANITIZE_STRING);
+
 		$this->encrypted_password = password_hash($this->raw_password, PASSWORD_DEFAULT);
 
 		$this->stored_users = json_decode(file_get_contents($this->storage), true);
@@ -41,6 +42,15 @@ class RegisterUser{
 
 	private function checkFieldValues(){
 		if(empty($this->username) /* || empty($this->email) */ || empty($this->raw_password)){
+			$this->error = "All fields are required.";
+			return false;
+		}else{
+			return true;
+		}
+	}
+
+	private function noGuestUserMade(){
+		if($this->username = "guest"){
 			$this->error = "All fields are required.";
 			return false;
 		}else{

@@ -9,10 +9,9 @@
 		setcookie("user", $user, time() - 3600, "paragram.repl.co");
 		header("location: login");	exit();
 	}
-	
-	if($_SESSION['user'] = ($config->admins)){
-		echo "<script>alert('ADMIN')</script>";
-	} else {echo "<script>alert('NOT ADMIN')</script>";};
+
+	if (isset($_SESSION['user'])) {
+		if (verifyAdmin()) { echo "<script>window.location.replace('./admin.php')</script>";}};
  ?>
 
 <?php include(__DIR__ . "/../../assets/php/header.php"); ?>

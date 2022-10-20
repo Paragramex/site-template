@@ -1,8 +1,9 @@
 <?php session_start();
-$config = json_decode(file_get_contents(__DIR__ . '/../../config.json'));
+
 if (!file_exists(__DIR__ . '/../../config.json')){
 	echo "<script>window.location.replace('/site/install')</script>";
 }
+require __DIR__ . "/../../assets/php/lib.php";
 ?>
 
 <html lang="en">
